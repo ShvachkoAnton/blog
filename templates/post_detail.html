@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}}{% endblock title %}
+{% block content %}
+<h1>{{post.title}}</h1>
+ <p class="date">
+    Опубликовано {{ post.publish }} автор {{ post.author }}
+  </p>
+  {{ post.body|linebreaks }}
+
+<p>
+<a href="{% url "post_share" post.id %}">
+Поделиться постом
+</a>
+</p>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
