@@ -12,6 +12,33 @@
 Поделиться постом
 </a>
 </p>
+
+{% with comments.count as total_comments %}
+<h2>Количество комментариев:{{total_comments}} </h2>
+{% endwith %}
+{% for comment in comments %}
+<div class='comment'>
+<p class='info'>
+  Комментарий {{forloop.counter}} созданный пользователем {{comment.name}}
+  {{comment.created}}
+</p>
+{{comment.body|linebreaks}}
+</div>
+{% empty %}
+<p>Комментарии отсутствуют</p>
+
+{% endfor %}
+{% if new_comment %}
+<h2>Новый комментарий добавлен</h2>
+{% else %}
+<h2>Добавить новый комментарий</h2>
+<form method='post'>
+{{comment_form.as_p}}
+{% csrf_token %}
+<p><input type='submit' value='Добавить комментарий'></p>
+</form>
+{% endif %}
+
 {% endblock content %}
 
 
