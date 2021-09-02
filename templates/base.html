@@ -23,6 +23,9 @@
 <a href="{{ post.get_absolute_url }}">{{post.title}}</a>
 </li>
 {% endfor %}
+<p>
+<a href="{% url "post_feed" %}">Подпишитесь на RSS ленту</a>
+ </p>
   </div>
 </body>
 </html>
